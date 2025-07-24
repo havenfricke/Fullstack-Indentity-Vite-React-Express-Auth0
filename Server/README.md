@@ -31,6 +31,8 @@ node entry.js
 - DB_USER=db_username
 - DB_PASS=db_password
 - DB_NAME=db_name
+- AUTH0_AUDIENCE=https://your-audience-here
+- AUTH0_DOMAIN=your.domain.here.com
 
 ## MySQL DB USER REQUIREMENTS
 
