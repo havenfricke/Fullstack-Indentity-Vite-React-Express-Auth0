@@ -1,17 +1,26 @@
-# EXPRESS SERVER - HAVEN FRICKE
-- dotenv: ^16.4.7
-- express: ^4.21.2
-- multer: 1.4.5-lts.1
-- mysql2: ^3.12.0
+# EXPRESS SERVER
+  - "dotenv": "^16.4.7",
+  - "express": "^4.21.2",
+  - "express-jwt": "^8.5.1",
+  - "jwks-rsa": "^3.2.0",
+  - "multer": "^1.4.5-lts.1",
+  - "mysql2": "^3.12.0"
 
 ## SETUP
 - Create .env file
-- Place in root directory
-- `cd server`
-- `npm i` 
+- Setup correct .env values
+- Place in root directory (top level)
+```
+cd server
+```
+```
+npm i
+```
 
 ## RUN
-- `node entry.js` 
+```
+node entry.js
+```
 
 ## DOTENV REQUIREMENTS
 - LISTENING_PORT=yourport
@@ -23,7 +32,7 @@
 - DB_PASS=db_password
 - DB_NAME=db_name
 
-## MySQL DB REQUIREMENTS
+## MySQL DB USER REQUIREMENTS
 
 ```
 CREATE TABLE users (

@@ -1,17 +1,20 @@
-# React + Vite
-
-- This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-# Additional Features
-
-- Provides basic create, read, update, and delete example routes via services using Axios. 
-These routes are meant to be called from react pages and components. State data is designed
-to be stored in AppState.js where the data is then validated and used by react
-components and pages.
-
-- Page router and mobx - needs additional documentation.
+# VITE + REACT
+  - "@auth0/auth0-react": "^2.3.0",
+  - "axios": "^1.8.1",
+  - "mobx-react-lite": "^4.1.0",
+  - "prop-types": "^15.8.1",
+  - "react": "^18.3.1",
+  - "react-dom": "^18.3.1",
+  - "react-router-dom": "^6.30.0"
 
 # Usage Instructions
-- `npm i` in highest directory.
-- `npm run dev` to run a dev server.
+In highest directory run:
+```
+npm i
+```
+To run a dev server (server url in .env first)
+```
+npm run dev
+```
+- `` .
 - `npm run build` for production environments.
