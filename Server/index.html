@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+</head>
+
+<body>
+    <h1>Test HTML</h1>
+
+    <div id='invalid-form' class='alert alert-danger'>&nbsp;</div>
+
+    <hr />
+
+    <div class="container">
+        <div class='row mb-3'>
+            <div class='col-md-4'>
+                <b>What is your name?</b>
+            </div>
+            <div class='col-md-8'>
+                <input id='name' type="text">
+            </div>
+        </div>
+
+        <div class='row mb-3'>
+            <div id='name-error' class='col-12 text-danger'>&nbsp;</div>
+        </div>
+
+        <div class='row mb-3'>
+            <div class='col-md-4'>
+                <b>What is your answer: Yes or No?</b>
+            </div>
+            <div class='col-md-8'>
+                <label for="yes">Yes</label>
+                <input type="radio" name="choice" id="yes" value="Yes">
+                <label for="no">No</label>
+                <input type="radio" name="choice" id="no" value="No">
+            </div>
+        </div>
+
+        <div class='row mb-3'>
+            <div id='choice-error' class='col-12 text-danger'>&nbsp;</div>
+        </div>
+
+        <div class='row mb-3'>
+            <div class='col-md-4'>
+                <b>Random File Upload</b>
+            </div>
+            <div class='col-md-8'>
+                <input type="file" id='file'>
+            </div>
+        </div>
+
+        <div class='row mb-3'>
+            <div id='file-error' class='col-12 text-danger'>&nbsp;</div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-12'>
+                <button id='submit'>Submit</button>
+            </div>
+        </div>
+    </div>
+
+
+    <hr />
+
+    <script>
+        //Hide banner at start of script
+        const errorBanner = document.getElementById('invalid-form');
+        errorBanner.hidden = true;
+    
+        //Click event handler
+        document.getElementById('submit').addEventListener('click', () => {
+            const fileField = document.querySelector('input[type="file"]');
+            const checkedChoiceButton = document.querySelector('input[name="choice"]:checked');
+    
+            //Build form data object to send in request to server
+            const formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('choice', null !== checkedChoiceButton ? checkedChoiceButton.value : '');
+            formData.append('file', fileField.files[0]);
+    
+            //Settings for FETCH API request
+            let fetchSettings = {
+                method: 'POST',
+                body: formData
+            };
+    
+            //Send FETCH API request
+            fetch("http://localhost/", fetchSettings)
+                .then((response) => {
+                    return new Promise((resolve) => response.json()
+                        .then((json) => resolve({
+                            status: response.status,
+                            json,
+                        })
+                    ));
+                })
+                //Logic to display errors on form 
+                .then(({ status, json }) => {
+                    const errorMessages = document.getElementsByClassName('text-danger');
+                    errorBanner.hidden = true;
+                    for (htmlElement of errorMessages) {
+                        htmlElement.innerHTML = '&nbsp;';
+                    }
+                    if (status === 400) {
+                        errorBanner.innerText = 'Form has errors. Please correct them and resubmit.';
+                        errorBanner.hidden = false;
+                        for (error of json.errors) {
+                            const errorId = error.path + '-error';
+                            document.getElementById(errorId).innerHTML = error.msg
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            return;
+        })
+    </script>
+</body>
+
+
+</html>
