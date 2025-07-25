@@ -24,6 +24,7 @@ async function updateUser(body) {
 
   // PROFILE PICTURE WILL SYNC WITH AUTH0 (REMOVE AFTER ADDING OTHER EDITABLES)
   const updatedUser = {
+    username: body.username ?? original.username,
     profilePicture: body.profilePicture ?? original.profilePicture
   };
 

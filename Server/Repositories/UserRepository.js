@@ -29,12 +29,13 @@ async function getUserById(id) {
 async function updateUser(id, data) {
   const sql = `
     UPDATE users 
-    profilePicture = ?
+    SET username = ?, profilePicture = ?
     WHERE id = ?
   `;
 
-  // PROFILE PICTURE WILL SYNC WITH AUTH0 (REMOVE AFTER ADDING OTHER EDITABLES)
+  // PROFILE & USERNAME PICTURE WILL SYNC WITH AUTH0 (REMOVE AFTER ADDING OTHER EDITABLES)
   const values = [
+    data.username,
     data.profilePicture,
     id
   ];
