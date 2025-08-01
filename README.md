@@ -22,16 +22,17 @@
 ### [Server](https://github.com/havenfricke/Fullstack-Indentity-Vite-React-Express-Auth0/tree/main/Server)
 
 ## AUTH0 SETUP
-  - Dashboard > Applications > Applications > + Create Application
-  - Dashboard > Applications > APIs > + Create API
+  - If you do not already have one, [create an Auth0 account](https://auth0.com/signup).
+  - [Dashboard](https://manage.auth0.com/) > Applications > Applications > + Create Application
+  - [Dashboard](https://manage.auth0.com/) > Applications > APIs > + Create API
 
 ## AUTH0 REQUIRED VALUES FOR .ENV (CLIENT AND SERVER)
-- VITE_AUTH0_DOMAIN or AUTH0_DOMAIN: Dashboard > Applications > (Your Auth0 app name) > Settings Tab > "Domain"
-- VITE_AUTH0_CLIENT_ID: Dashboard > Applications > (Your Auth0 app name) > Settings Tab > "Client ID"
-- VITE_AUTH0_AUDIENCE or AUTH0_AUDIENCE: Dashboard > APIs > (Your Auth0 app name) > Settings Tab > "Identifier"
+- VITE_AUTH0_DOMAIN or AUTH0_DOMAIN: [Dashboard](https://manage.auth0.com/) > Applications > (Your Auth0 app name) > Settings Tab > "Domain"
+- VITE_AUTH0_CLIENT_ID: [Dashboard](https://manage.auth0.com/) > Applications > (Your Auth0 app name) > Settings Tab > "Client ID"
+- VITE_AUTH0_AUDIENCE or AUTH0_AUDIENCE: [Dashboard](https://manage.auth0.com/) > APIs > (Your Auth0 app name) > Settings Tab > "Identifier"
 
 ## AUTH0 REQUIRED SETTINGS
-- Dashboard > Applications > Applications > Settings Tab > "Application URIs" > "Allowed Callback URLs", "Allowed Logout URLs"
+- [Dashboard](https://manage.auth0.com/) > Applications > Applications > Settings Tab > "Application URIs" > "Allowed Callback URLs", "Allowed Logout URLs"
 - For all three fields, add the client or frontend url. 
 - In a dev environment, something like https://localhost:3000 (You'll need to change this for production environments).
 
