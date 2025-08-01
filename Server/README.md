@@ -23,6 +23,9 @@ node entry.js
 ```
 
 ## DOTENV REQUIREMENTS
+
+The .env for the server is distributed throughout the application to conceal the values of application identity.
+
 - LISTENING_PORT=yourport
 - NODE_ENV=devorproduction
 - CORS_ALLOWED_DOMAINS=["http://localhost", "https://example.com"]

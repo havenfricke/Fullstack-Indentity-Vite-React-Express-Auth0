@@ -37,7 +37,7 @@ async function updateUser(id, data) {
   const values = [
     data.username,
     data.profilePicture,
-    id
+    id // Ensure id is last in the values array
   ];
 
   console.log('Updating user with values:', values);
