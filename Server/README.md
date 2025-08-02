@@ -7,9 +7,8 @@
   - "mysql2": "^3.12.0"
 
 ## SETUP
-- Create .env file
+- Create .env file in root directory (\Server)
 - Setup correct .env values
-- Place in root directory (top level)
 ```
 cd server
 ```

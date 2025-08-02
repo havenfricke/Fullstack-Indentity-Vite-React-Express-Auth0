@@ -17,7 +17,11 @@ The .env for the client is distributed throughout the application to conceal the
   - VITE_SERVER_URL=http://localhost:80
 
 # Usage Instructions
-In highest directory run:
+- Create .env file in root directory (\Client)
+- Setup correct .env values
+```
+cd client
+```
 ```
 npm i
 ```
@@ -25,7 +29,7 @@ To run a dev server (server url in .env first)
 ```
 npm run dev
 ```
-For production environments
+Compiling for production environments
 ```
 npm run build
 ```
