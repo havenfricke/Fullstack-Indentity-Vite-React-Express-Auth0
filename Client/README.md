@@ -40,6 +40,8 @@ npm run build
 ### User Sync
 AuthService.js contains ```registerOrSyncUser()```:
 ```
+// AuthService.js
+
 export async function registerOrSyncUser(user) { 
   const { sub, email, name, picture } = user;
   try {
@@ -61,6 +63,8 @@ export async function registerOrSyncUser(user) {
 We would remove username if we want to let the user change it, as we do not want it to sync with data passed back to us from Auth0. We want this application to store that information (in the database). 
 ```registerOrSyncUser()``` is called in App.jsx:
 ```
+// App.jsx
+
  const { user, isAuthenticated, isLoading } = useAuth0();
 
   useEffect(() => {
