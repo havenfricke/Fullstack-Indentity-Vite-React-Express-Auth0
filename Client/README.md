@@ -7,7 +7,7 @@
   - "react-dom": "^18.3.1",
   - "react-router-dom": "^6.30.0"
 
-## .ENV REQUIREMENTS
+## ENVIRONMENT VARIABLES (.ENV) REQUIREMENTS
 
 The .env for the client is distributed throughout the application to conceal the values of application identity.
 

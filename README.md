@@ -1,6 +1,6 @@
 # IDENTITY ASSERTION: REACT + EXPRESS + AUTH0
 
-Fullstack scaffold / boilerplate. Features sign-up, log-in, and the option to add more application specific data to the user. Auth0 handles the login services and the application uses this information to store the user in our database.
+Fullstack scaffold / boilerplate. Features sign-up, log-in, user-sync, and the option to add more application specific un-synced data to the user table. Auth0 handles the login services and the application uses the information returned from Auth0 to create and store the user in our database.
 
 ## REACT + VITE
   - "@auth0/auth0-react": "^2.3.0",
