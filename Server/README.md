@@ -23,6 +23,8 @@ node entry.js
 
 ## DOTENV REQUIREMENTS
 
+[Express: Environment variables using dotenv](https://www.npmjs.com/package/dotenv#-documentation)
+
 The .env for the server is distributed throughout the application to conceal the values of application identity.
 
 - LISTENING_PORT=yourport
@@ -48,3 +50,10 @@ CREATE TABLE users (
   role ENUM('user', 'admin') DEFAULT 'user'
 );
 ```
+Add columns to the user table: 
+```
+ALTER TABLE users
+  ADD COLUMN bio TEXT DEFAULT NULL,
+  ADD COLUMN joinedAt DATETIME DEFAULT CURRENT_TIMESTAMP;
+```
+Be sure to update the frontend to sync account data if necessary.

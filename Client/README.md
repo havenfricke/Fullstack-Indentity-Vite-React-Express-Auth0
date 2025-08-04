@@ -9,6 +9,8 @@
 
 ## ENVIRONMENT VARIABLES (.ENV) REQUIREMENTS
 
+[Vite: Using environment variables and modes](https://vite.dev/guide/env-and-mode)
+
 The .env for the client is distributed throughout the application to conceal the values of application identity.
 
   - VITE_AUTH0_DOMAIN=your-domain.us.auth0.com
