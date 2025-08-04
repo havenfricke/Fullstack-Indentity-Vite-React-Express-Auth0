@@ -68,4 +68,4 @@ export async function registerOrSyncUser(user) {
     }
   }, [isAuthenticated, user]);
 ```
-Update AuthService.js to reflect the user properties the application 
+Update AuthService.js to reflect the user properties the application may need to sync.
