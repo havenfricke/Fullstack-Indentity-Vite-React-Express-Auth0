@@ -16,7 +16,7 @@ The .env for the client is distributed throughout the application to conceal the
   - VITE_AUTH0_AUDIENCE=https://your-audience-here
   - VITE_SERVER_URL=http://localhost:80
 
-# Usage Instructions
+## Usage Instructions
 - Create .env file in root directory (\Client)
 - Setup correct .env values
 ```
@@ -33,3 +33,37 @@ Compiling for production environments
 ```
 npm run build
 ```
+
+## Notes
+### User Sync
+AuthService.js contains ```registerOrSyncUser()```:
+```
+export async function registerOrSyncUser(user) { 
+  const { sub, email, name, picture } = user;
+  try {
+      const response = await api.post('/users', {
+        // THESE VALUES WILL SYNC WITH AUTH0 EVERY REFRESH OR LOGIN
+        // DO NOT USE ANYTHING ELSE HERE UNLESS YOU WANT IT TO SYNC
+        auth0Id: sub,
+        email,
+        username: name,
+        profilePicture: picture
+      });
+
+      AppState.user = response.data;
+  } catch (error) {
+      console.error('[User Sync Failed]', error);
+  }
+}
+```
+```registerOrSyncUser()``` is called in App.jsx:
+```
+ const { user, isAuthenticated, isLoading } = useAuth0();
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      registerOrSyncUser(user);
+    }
+  }, [isAuthenticated, user]);
+```
+Update AuthService.js to reflect the user properties the application 
