@@ -58,6 +58,7 @@ export async function registerOrSyncUser(user) {
   }
 }
 ```
+We would remove username if we want to let the user change it, as we do not want it to sync with data passed back to us from Auth0. We want this application to store that information (in the database). 
 ```registerOrSyncUser()``` is called in App.jsx:
 ```
  const { user, isAuthenticated, isLoading } = useAuth0();
@@ -68,4 +69,6 @@ export async function registerOrSyncUser(user) {
     }
   }, [isAuthenticated, user]);
 ```
-Update AuthService.js to reflect the user properties the application may need to sync.
+Update AuthService.js to reflect the user properties the application may need to sync (when user logs in / signs up). 
+This ensures that accounts can be handled through Auth0 and sync with our application but service from the application (business logic added to this app) is managed by our client, server, and database. Any added data columns to the user table will correlate to the synched data from Auth0.
+Users not added to the database for any reason upon initial sign-up will synchronize when the user logs in again. 
