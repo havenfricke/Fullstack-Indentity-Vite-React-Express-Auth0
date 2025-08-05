@@ -6,9 +6,10 @@
   - "multer": "^1.4.5-lts.1",
   - "mysql2": "^3.12.0"
 
-## SETUP
+## USAGE INSTRUCTIONS
 - Create .env file in root directory (\Server)
 - Setup correct .env values
+
 ```
 cd server
 ```
@@ -16,7 +17,13 @@ cd server
 npm i
 ```
 
-## RUN
+The flow of backend is:
+
+1) Create a controller (ex. NounController.js)
+2) Register the controller to the express application (entry.js)
+3) 
+
+## RUNTIME
 ```
 node entry.js
 ```

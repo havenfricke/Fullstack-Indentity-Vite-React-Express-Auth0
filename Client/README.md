@@ -18,7 +18,7 @@ The .env for the client is distributed throughout the application to conceal the
   - VITE_AUTH0_AUDIENCE=https://your-audience-here
   - VITE_SERVER_URL=http://localhost:80
 
-## Usage Instructions
+## USAGE INSTRUCTIONS
 - Create .env file in root directory (\Client)
 - Setup correct .env values
 ```
@@ -27,7 +27,13 @@ cd client
 ```
 npm i
 ```
-To run a dev server (server url in .env first)
+
+The flow of the frontend is:
+
+1) Create and use components to set up basic features
+2) Send api requests to a new service (ex. NounService.js) from pages and components
+3) Use the Application State (AppState.js) to store incoming data from the server
+## RUNTIME
 ```
 npm run dev
 ```
@@ -35,8 +41,7 @@ Compiling for production environments
 ```
 npm run build
 ```
-
-## Notes
+## NOTES
 ### User Sync
 AuthService.js contains ```registerOrSyncUser()```:
 ```
@@ -60,7 +65,7 @@ export async function registerOrSyncUser(user) {
   }
 }
 ```
-We would remove username if we want to let the user change it, as we do not want it to sync with data passed back to us from Auth0. We want this application to store that information (in the database). 
+Remove username if letting the user change it is desired, as we do not want it to sync with data passed back to us from Auth0. We want this application to store that information (in the database). 
 ```registerOrSyncUser()``` is called in App.jsx:
 ```
 // App.jsx
@@ -74,5 +79,4 @@ We would remove username if we want to let the user change it, as we do not want
   }, [isAuthenticated, user]);
 ```
 Update AuthService.js to reflect the user properties the application may need to sync (when user logs in / signs up). 
-This ensures that accounts can be handled through Auth0 and sync with our application but service from the application (business logic added to this app) is managed by our client, server, and database. Any added data columns to the user table will correlate to the synched data from Auth0.
-Users not added to the database for any reason upon initial sign-up will synchronize when the user logs in again. 
+This ensures that accounts can be handled through Auth0 and sync with our application but service from the application (business logic added to this app) is managed by our client, server, and database. Any added data columns to the user table will correlate to the synched data from Auth0 and the id generated for an account in the server (IdGen.js). Users not added to the database for any reason upon initial sign-up will synchronize when the user logs in again. 
