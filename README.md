@@ -34,7 +34,7 @@ Fullstack scaffold / boilerplate. Features sign-up, log-in, user-sync, and the o
 - VITE_AUTH0_AUDIENCE or AUTH0_AUDIENCE: [Dashboard](https://manage.auth0.com/) > APIs > (Your Auth0 app name) > Settings Tab > "Identifier"
 
 ## AUTH0 REQUIRED SETTINGS
-- [Dashboard](https://manage.auth0.com/) > Applications > Applications > Settings Tab > "Application URIs" > "Allowed Callback URLs", "Allowed Logout URLs"
+- [Dashboard](https://manage.auth0.com/) > Applications > Applications > Settings Tab > "Application URIs", "Allowed Callback URLs", "Allowed Logout URLs"
 - For all three fields, add the client or frontend url. 
 - In a dev environment, something like https://localhost:3000 (You'll need to change this for production environments).
 
