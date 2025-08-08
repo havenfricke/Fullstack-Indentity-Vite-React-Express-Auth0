@@ -30,9 +30,9 @@ npm i
 
 The flow of the frontend is:
 
-1) Create and use components to set up basic features
+1) Create and use React components to set up basic features
 2) Send api requests to a new service (ex. NounService.js) from pages and components
-3) Use the Application State (AppState.js) to store incoming data from the server
+3) Use the Application State (AppState.js) to store incoming data from the server and send new or altered data to the server. 
 ## RUNTIME
 ```
 npm run dev
@@ -79,4 +79,17 @@ Remove username if letting the user change it is desired, as we do not want it t
   }, [isAuthenticated, user]);
 ```
 Update AuthService.js to reflect the user properties the application may need to sync (when user logs in / signs up). 
-This ensures that accounts can be handled through Auth0 and sync with our application but service from the application (business logic added to this app) is managed by our client, server, and database. Any added data columns to the user table will correlate to the synched data from Auth0 and the id generated for an account in the server (IdGen.js). Users not added to the database for any reason upon initial sign-up will synchronize when the user logs in again. 
+This ensures that accounts can be handled through Auth0 and sync with the application but service from the application (business logic added to this app) is managed by this application's client, server, and database. Any added data columns to the user table will correlate to the synched data from Auth0 and the id generated for an account in the server (IdGen.js) before being stored in the database. Users not added to the database for any reason upon initial sign-up will synchronize when the user logs in again. 
+
+Unverified users (users who have not clicked on the verification email link), are not added to the database. Auth0 provides account flags used on the front end to only send verified user information to the database:
+
+```
+// App.jsx
+
+useEffect(() => {
+  if (isAuthenticated && user?.email_verified) { // This prevents unverified users from being saved to the DB.
+    registerOrSyncUser(user);
+  }
+}, [isAuthenticated, user]);
+
+```
