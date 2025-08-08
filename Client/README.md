@@ -81,7 +81,7 @@ Remove username if letting the user change it is desired, as we do not want it t
 Update AuthService.js to reflect the user properties the application may need to sync (when user logs in / signs up). 
 This ensures that accounts can be handled through Auth0 and sync with the application but service from the application (business logic added to this app) is managed by this application's client, server, and database. Any added data columns to the user table will correlate to the synched data from Auth0 and the id generated for an account in the server (IdGen.js) before being stored in the database. Users not added to the database for any reason upon initial sign-up will synchronize when the user logs in again. 
 
-Unverified users (users who have not clicked on the verification email link), are not added to the database. Auth0 provides account flags used on the front end to only send verified user information to the database:
+Unverified users (users who have not clicked on the verification email link), are not added to the database. Auth0 provides account flags used on the front end to send only verified user information to the database:
 
 ```
 // App.jsx
