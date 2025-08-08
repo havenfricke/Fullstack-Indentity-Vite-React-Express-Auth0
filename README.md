@@ -42,9 +42,35 @@ Fullstack scaffold / boilerplate. Features sign-up, log-in, user-sync, and the o
 
 ## AUTH0 REQUIRED SETTINGS
 
+### URIs / URLs
+
 - [Dashboard](https://manage.auth0.com/) > Applications > Applications > Settings Tab > "Application URIs", "Allowed Callback URLs", "Allowed Logout URLs"
 
 - For all three fields, add the client or frontend url. 
 
 - In a dev environment, something like https://localhost:3000 (You'll need to change this for production environments).
 
+### EMAIL VERIFICATION POST SIGNUP
+
+- [Actions](https://manage.auth0.com/dashboard/us/dev-g1go98bp/actions/triggers) > Triggers > "post-login"
+
+- Create an action for post-login (name send "verification email" or "verify email action")
+
+- Use this in the JavaScript portal Auth0 offers for creating actions to send verification upon first sign in:
+
+```
+/**
+ * Post-Login Action to send a verification email after first login
+ */
+exports.onExecutePostLogin = async (event, api) => {
+  const isFirstLogin = event.stats.logins_count === 1;
+
+  if (!event.user.email_verified && isFirstLogin) {
+    // Bypass the TypeScript issue
+    (api).sendEmailVerification();
+  }
+}
+```
+- After implementing, go to [Actions](https://manage.auth0.com/dashboard/us/dev-g1go98bp/actions/triggers) > Triggers > "post-login"
+
+- Add the newly created action to the post-login trigger

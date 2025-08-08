@@ -5,13 +5,14 @@ import { Navbar } from "./Components/Navbar";
 import { Outlet } from "react-router-dom";
 
 export function App() {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
-  useEffect(() => {
-    if (isAuthenticated && user) {
-      registerOrSyncUser(user);
-    }
-  }, [isAuthenticated, user]);
+useEffect(() => {
+  if (isAuthenticated && user?.email_verified) { // This prevents unverified users from being saved to the DB.
+    registerOrSyncUser(user);
+  }
+}, [isAuthenticated, user]);
+
 
   return (
     <>
