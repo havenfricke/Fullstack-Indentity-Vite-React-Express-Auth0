@@ -19,8 +19,8 @@ npm i
 
 The flow of backend is:
 
-1) Create a controller (ex. NounController.js)
-2) Register the controller to the express application (entry.js)
+1) For a new Backend route, create a controller by extending BaseController.js (ex. NounController.js)
+2) Register / mount the controller to the express application (entry.js)
 3) Create NounService.js, NounRepository.js, and Noun.js data model.
 4) Controller: Routing / File Management (multer), Service: Business Logic, Repository: SQL execution.
 

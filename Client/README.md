@@ -31,8 +31,10 @@ npm i
 The flow of the frontend is:
 
 1) Create and use React components to set up basic features
-2) Send api requests to a new service (ex. NounService.js) from pages and components
-3) Use the Application State (AppState.js) to store incoming data from the server and send new or altered data to the server. 
+2) Set up new route for each new page created by importing the component to Router.jsx.
+2) Call to a newly created or existing service for api requests (ex. NounService.js) from pages and components.
+3) Use the Application State (AppState.js) to store incoming data from the response. 
+4) Interate through that data using React.
 ## RUNTIME
 ```
 npm run dev
