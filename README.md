@@ -59,15 +59,15 @@ Fullstack scaffold / boilerplate. Features sign-up, log-in, user-sync, and the o
 - Use this in the JavaScript portal Auth0 offers for creating actions to send verification upon first sign in:
 
 ```
-/**
- * Post-Login Action to send a verification email after first login
- */
+
+// Post-Login Action to send a verification email after first login
+
 exports.onExecutePostLogin = async (event, api) => {
   const isFirstLogin = event.stats.logins_count === 1;
 
   if (!event.user.email_verified && isFirstLogin) {
     // Bypass the TypeScript issue
-    (api).sendEmailVerification();
+    api.sendEmailVerification();
   }
 }
 ```
