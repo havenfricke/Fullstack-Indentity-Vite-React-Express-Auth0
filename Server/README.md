@@ -69,7 +69,7 @@ and the data models that correspond to users throughout the application (User.js
 
 ## GUARDING ENDPOINTS AND READ-WRITE PERMISSIONS
 
-Use functions ```verifyJwt()```, ```attachUserFromAuth()``` and ```requireOwnership()``` from ```AuthGuard.js``` in the Express router arguments in that order from left to right.
+Use functions ```verifyJwt()```, ```attachUserFromAuth()``` and ```requireOwnership()``` from ```AuthGuard.js``` and ```VerifyJWT.js``` in the Express router arguments in that order from left to right.
 ```
 class UserController extends BaseController {
   constructor() {
