@@ -21,7 +21,8 @@ The flow of backend is:
 
 1) Create a controller (ex. NounController.js)
 2) Register the controller to the express application (entry.js)
-3) 
+3) Create NounService.js, NounRepository.js, and Noun.js data model.
+4) Controller: Routing / File Management (multer), Service: Business Logic, Repository: SQL execution.
 
 ## RUNTIME
 ```
@@ -63,4 +64,5 @@ ALTER TABLE users
   ADD COLUMN bio TEXT DEFAULT NULL,
   ADD COLUMN joinedAt DATETIME DEFAULT CURRENT_TIMESTAMP;
 ```
-Be sure to update the frontend to sync account data if necessary.
+If columns are added, be sure to update the frontend to sync only necessary static account data 
+and the data models that correspond to users throughout the application (User.js).
