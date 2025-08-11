@@ -66,3 +66,24 @@ ALTER TABLE users
 ```
 If columns are added, be sure to update the frontend to sync only necessary static account data 
 and the data models that correspond to users throughout the application (User.js).
+
+## GUARDING ENDPOINTS AND READ-WRITE PERMISSIONS
+
+Use functions ```verifyJwt()```, ```attachUserFromAuth()``` and ```requireOwnership()``` from ```AuthGuard.js``` in the Express router arguments in that order from left to right.
+```
+class UserController extends BaseController {
+  constructor() {
+    super('/users');
+
+    this.router
+      .get('', this.getAllUsers)
+      .get('/:id', this.getUserById)
+      .post('', this.registerOrUpdate)
+      .put('/:id', verifyJwt, attachUserFromAuth, requireOwnership, this.updateUser)
+      .delete('/:id', verifyJwt, attachUserFromAuth, requireOwnership, this.deleteUser);
+  }
+```
+- ```verifyJwt()``` validates Auth0-issued JWT access tokens on incoming requests. “trust the token,” then for the other middleware, “load the user and enforce permissions.”
+- ```attachUserFromAuth()``` authenticates the request by looking up the user and populates req.user with the user’s database record based on their Auth0 ID from the authentication token.
+- ```requireOwnership()``` enforces that only the account owner (or an admin) can proceed.
+

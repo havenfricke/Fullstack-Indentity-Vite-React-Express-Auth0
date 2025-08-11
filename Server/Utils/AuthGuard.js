@@ -6,7 +6,7 @@ function requireOwnership(req, res, next) {
 
   if (userIdFromToken !== idParam && req.user?.role !== 'admin') {
     console.log('[Ownership check failed]', userIdFromToken, idParam);
-    return res.status(403).json({ error: 'Forbidden: You can only modify your own account' });
+    return res.status(403).json({ error: 'Not Allowed' });
   }
 
   next();
