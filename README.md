@@ -1,4 +1,4 @@
-# IDENTITY ASSERTION: REACT + EXPRESS + AUTH0
+## IDENTITY ASSERTION: REACT + EXPRESS + AUTH0
 
 Fullstack scaffold / boilerplate. Features sign-up, log-in, user-sync, and the option to add more application controlled data columns to the user table. Auth0 handles the login services and the application uses the information returned from Auth0 to create and store the user in our database. The application handles syncing specific data such as email and "auth0Id".
 
