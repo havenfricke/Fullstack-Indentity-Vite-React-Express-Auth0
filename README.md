@@ -15,7 +15,7 @@ Fullstack scaffold / boilerplate. Features sign-up, log-in, user-sync, and the o
 
 
 ### EXPRESS (SERVER)
-  - dotenv,
+  - dotenv
   - express
   - express-jwt
   - jwks-rsa
