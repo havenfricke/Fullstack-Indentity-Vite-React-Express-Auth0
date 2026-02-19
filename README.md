@@ -1,6 +1,6 @@
 ### IDENTITY ASSERTION: REACT + EXPRESS + AUTH0
 
-Fullstack scaffold / boilerplate. Features sign-up, log-in, user-sync, and the option to add more application controlled data columns to the user table. Auth0 handles the login services and the application uses the information returned from Auth0 to create and store the user in our database. The application handles syncing specific data such as email and "auth0Id".
+Fullstack scaffold / boilerplate. Features sign-up, log-in, user-sync, and the option to add more application controlled data columns to the user table. Auth0 handles the login services and the application uses the information returned from Auth0 to create and store the user in a MySQL database. The application handles syncing specific data such as email and "auth0Id".
 
 ### REACT + VITE (CLIENT)
   - @auth0/auth0-react
@@ -50,7 +50,7 @@ Fullstack scaffold / boilerplate. Features sign-up, log-in, user-sync, and the o
 
 - In a dev environment, something like https://localhost:3000 (You'll need to change this for production environments).
 
-#### EMAIL VERIFICATION POST SIGNUP
+### EMAIL VERIFICATION POST SIGNUP
 
 - [Actions](https://manage.auth0.com/dashboard/us/dev-g1go98bp/actions/triggers) > Triggers > "post-login"
 
